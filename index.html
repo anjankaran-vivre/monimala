@@ -26,12 +26,13 @@
         }
 
         .header-content {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -64,80 +65,115 @@
             color: #666;
         }
 
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
             background: linear-gradient(135deg, #fbbf24 0%, #f43f5e 100%);
             border: none;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 16px;
+            font-weight: 600;
         }
 
-        .main-container {
-            display: flex;
-            max-width: 1400px;
-            margin: 0 auto;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .sidebar {
+        /* Mobile Sidebar */
+        .mobile-sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: -100%;
             width: 250px;
+            height: 100vh;
             background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            height: fit-content;
-            position: sticky;
-            top: 100px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: left 0.3s ease;
+            overflow-y: auto;
         }
 
-        .sidebar h3 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #333;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #fbbf24;
+        .mobile-sidebar.active {
+            left: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f43f5e 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .sidebar-content {
+            padding: 20px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+        }
+
+        .overlay.active {
+            display: block;
         }
 
         .nav-btn {
-            width: 100%;
-            padding: 12px 15px;
+            padding: 10px 20px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
             transition: all 0.3s;
-            background: #f9fafb;
+            background: white;
             color: #333;
-            margin-bottom: 10px;
-            text-align: left;
         }
 
         .nav-btn:hover, .nav-btn.active {
             background: linear-gradient(135deg, #fbbf24 0%, #f43f5e 100%);
             color: white;
-            transform: translateX(5px);
         }
 
-        .content {
-            flex: 1;
+        /* Mobile sidebar nav buttons */
+        .mobile-sidebar .nav-btn {
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: left;
+            background: #f9fafb;
         }
 
         .hero {
             text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 20px;
             background: linear-gradient(135deg, #d97706 0%, #e11d48 50%, #9333ea 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -145,9 +181,9 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 20px;
             color: #555;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .search-box {
@@ -178,9 +214,12 @@
         }
 
         .products {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 30px;
         }
 
         .product-card {
@@ -313,47 +352,38 @@
             padding: 60px 20px;
             color: #666;
             font-size: 20px;
-            background: white;
-            border-radius: 15px;
         }
 
         /* Mobile Styles */
         @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
             .menu-toggle {
                 display: block;
             }
 
-            .main-container {
-                flex-direction: column;
-                padding: 10px;
-            }
-
-            .sidebar {
-                width: 100%;
-                position: static;
-                display: none;
-            }
-
-            .sidebar.active {
+            .mobile-sidebar {
                 display: block;
-                margin-bottom: 20px;
             }
 
             .hero h2 {
-                font-size: 28px;
+                font-size: 32px;
             }
 
             .hero p {
                 font-size: 16px;
             }
 
-            .products {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 15px;
+            .header-content {
+                flex-direction: row;
             }
 
-            .nav-btn {
-                font-size: 15px;
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+                padding: 20px 10px;
             }
 
             .logo-text h1 {
@@ -372,16 +402,29 @@
             }
 
             .hero {
-                padding: 30px 15px;
-            }
-
-            .hero h2 {
-                font-size: 24px;
+                padding: 40px 15px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="sidebar-header">
+            <h3>Categories</h3>
+            <button class="close-btn" onclick="closeSidebar()">×</button>
+        </div>
+        <div class="sidebar-content">
+            <button class="nav-btn active" onclick="filterProducts('all')">All Products</button>
+            <button class="nav-btn" onclick="filterProducts('jewellery')">💎 Jewellery</button>
+            <button class="nav-btn" onclick="filterProducts('gifts')">🎁 Gifts</button>
+            <button class="nav-btn" onclick="filterProducts('cosmetics')">💄 Cosmetics</button>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
     <header>
         <div class="header-content">
             <div class="logo">
@@ -393,37 +436,35 @@
                     <p>Fashion Jewellery House</p>
                 </div>
             </div>
-            <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <button class="nav-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="nav-btn" onclick="filterProducts('jewellery')">Jewellery</button>
+                <button class="nav-btn" onclick="filterProducts('gifts')">Gifts</button>
+                <button class="nav-btn" onclick="filterProducts('cosmetics')">Cosmetics</button>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" onclick="openSidebar()">☰ Menu</button>
         </div>
     </header>
 
-    <div class="main-container">
-        <aside class="sidebar" id="sidebar">
-            <h3>Categories</h3>
-            <button class="nav-btn active" onclick="filterProducts('all')">All Products</button>
-            <button class="nav-btn" onclick="filterProducts('jewellery')">💎 Jewellery</button>
-            <button class="nav-btn" onclick="filterProducts('gifts')">🎁 Gifts</button>
-            <button class="nav-btn" onclick="filterProducts('cosmetics')">💄 Cosmetics</button>
-        </aside>
+    <section class="hero">
+        <h2>Exquisite Jewellery & Thoughtful Gifts</h2>
+        <p>Discover timeless elegance and perfect presents for every occasion</p>
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+        </div>
+    </section>
 
-        <main class="content">
-            <section class="hero">
-                <h2>Exquisite Jewellery & Thoughtful Gifts</h2>
-                <p>Discover timeless elegance and perfect presents for every occasion</p>
-                <div class="search-box">
-                    <span class="search-icon">🔍</span>
-                    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
-                </div>
-            </section>
+    <section class="products" id="productsContainer">
+        <!-- Products will be inserted here by JavaScript -->
+    </section>
 
-            <section class="products" id="productsContainer">
-                <!-- Products will be inserted here by JavaScript -->
-            </section>
-
-            <div id="noResults" class="no-results hidden">
-                No products found matching your search.
-            </div>
-        </main>
+    <div id="noResults" class="no-results hidden">
+        No products found matching your search.
     </div>
 
     <footer>
@@ -588,9 +629,16 @@
         let currentCategory = 'all';
         let currentSearch = '';
 
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('active');
+        function openSidebar() {
+            document.getElementById('mobileSidebar').classList.add('active');
+            document.getElementById('overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            document.getElementById('mobileSidebar').classList.remove('active');
+            document.getElementById('overlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         function displayProducts() {
@@ -631,18 +679,13 @@
         function filterProducts(category) {
             currentCategory = category;
             
-            // Update button styles
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+            // Update button styles for both desktop and mobile
+            const allButtons = document.querySelectorAll('.nav-btn');
+            allButtons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
             
             displayProducts();
-
-            // Close sidebar on mobile after selection
-            if (window.innerWidth <= 768) {
-                const sidebar = document.getElementById('sidebar');
-                sidebar.classList.remove('active');
-            }
+            closeSidebar();
         }
 
         function searchProducts() {
