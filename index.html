@@ -26,30 +26,18 @@
         }
 
         .header-content {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #fbbf24 0%, #f43f5e 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
         }
 
         .logo-image {
@@ -76,38 +64,80 @@
             color: #666;
         }
 
-        nav {
+        .menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #fbbf24 0%, #f43f5e 100%);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .main-container {
             display: flex;
-            gap: 15px;
-            margin-top: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #fbbf24;
         }
 
         .nav-btn {
-            padding: 10px 20px;
+            width: 100%;
+            padding: 12px 15px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
             transition: all 0.3s;
-            background: white;
+            background: #f9fafb;
             color: #333;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
         .nav-btn:hover, .nav-btn.active {
             background: linear-gradient(135deg, #fbbf24 0%, #f43f5e 100%);
             color: white;
+            transform: translateX(5px);
+        }
+
+        .content {
+            flex: 1;
         }
 
         .hero {
             text-align: center;
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .hero h2 {
-            font-size: 48px;
-            margin-bottom: 20px;
+            font-size: 42px;
+            margin-bottom: 15px;
             background: linear-gradient(135deg, #d97706 0%, #e11d48 50%, #9333ea 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -115,9 +145,9 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             color: #555;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .search-box {
@@ -148,12 +178,9 @@
         }
 
         .products {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 25px;
         }
 
         .product-card {
@@ -286,29 +313,70 @@
             padding: 60px 20px;
             color: #666;
             font-size: 20px;
+            background: white;
+            border-radius: 15px;
         }
 
+        /* Mobile Styles */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .sidebar {
+                width: 100%;
+                position: static;
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
+                margin-bottom: 20px;
+            }
+
             .hero h2 {
-                font-size: 32px;
+                font-size: 28px;
             }
 
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .nav-btn {
-                width: 100%;
+            .hero p {
+                font-size: 16px;
             }
 
             .products {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .nav-btn {
+                font-size: 15px;
+            }
+
+            .logo-text h1 {
+                font-size: 22px;
+            }
+
+            .logo-image {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 30px 15px;
+            }
+
+            .hero h2 {
+                font-size: 24px;
             }
         }
     </style>
@@ -317,38 +385,45 @@
     <header>
         <div class="header-content">
             <div class="logo">
-            <div class="logo-image">
-                <img src="monimala logo2.png" alt="Monimala Logo">
-            </div>
-            <div class="logo-text">
-                <h1>Monimala</h1>
-                <p>Fashion Jewellery House</p>
+                <div class="logo-image">
+                    <img src="monimala logo2.png" alt="Monimala Logo">
+                </div>
+                <div class="logo-text">
+                    <h1>Monimala</h1>
+                    <p>Fashion Jewellery House</p>
                 </div>
             </div>
-            <nav>
-                <button class="nav-btn active" onclick="filterProducts('all')">All Products</button>
-                <button class="nav-btn" onclick="filterProducts('jewellery')">Jewellery</button>
-                <button class="nav-btn" onclick="filterProducts('gifts')">Gifts</button>
-                <button class="nav-btn" onclick="filterProducts('cosmetics')">Cosmetics</button>
-            </nav>
+            <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
         </div>
     </header>
 
-    <section class="hero">
-        <h2>Exquisite Jewellery & Thoughtful Gifts</h2>
-        <p>Discover timeless elegance and perfect presents for every occasion</p>
-        <div class="search-box">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
-        </div>
-    </section>
+    <div class="main-container">
+        <aside class="sidebar" id="sidebar">
+            <h3>Categories</h3>
+            <button class="nav-btn active" onclick="filterProducts('all')">All Products</button>
+            <button class="nav-btn" onclick="filterProducts('jewellery')">💎 Jewellery</button>
+            <button class="nav-btn" onclick="filterProducts('gifts')">🎁 Gifts</button>
+            <button class="nav-btn" onclick="filterProducts('cosmetics')">💄 Cosmetics</button>
+        </aside>
 
-    <section class="products" id="productsContainer">
-        <!-- Products will be inserted here by JavaScript -->
-    </section>
+        <main class="content">
+            <section class="hero">
+                <h2>Exquisite Jewellery & Thoughtful Gifts</h2>
+                <p>Discover timeless elegance and perfect presents for every occasion</p>
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+                </div>
+            </section>
 
-    <div id="noResults" class="no-results hidden">
-        No products found matching your search.
+            <section class="products" id="productsContainer">
+                <!-- Products will be inserted here by JavaScript -->
+            </section>
+
+            <div id="noResults" class="no-results hidden">
+                No products found matching your search.
+            </div>
+        </main>
     </div>
 
     <footer>
@@ -360,7 +435,7 @@
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>📞 +91-9876543210</p>
+                <p>📞 +91-9339746144</p>
                 <p>📧 info@monimala.com</p>
             </div>
             <div class="footer-section">
@@ -385,8 +460,9 @@
                 name: "Golden Kundan Necklace Set",
                 category: "jewellery",
                 price: "₹2,999",
+                Code:Bandel3672
                 image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 2,
@@ -394,7 +470,7 @@
                 category: "jewellery",
                 price: "₹899",
                 image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 3,
@@ -402,7 +478,7 @@
                 category: "jewellery",
                 price: "₹1,499",
                 image: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 4,
@@ -410,7 +486,7 @@
                 category: "jewellery",
                 price: "₹799",
                 image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 5,
@@ -418,7 +494,7 @@
                 category: "gifts",
                 price: "₹1,999",
                 image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 6,
@@ -426,7 +502,7 @@
                 category: "gifts",
                 price: "₹1,299",
                 image: "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 7,
@@ -434,7 +510,7 @@
                 category: "jewellery",
                 price: "₹1,199",
                 image: "https://images.unsplash.com/photo-1589674781759-c0c97c180c05?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 8,
@@ -442,7 +518,7 @@
                 category: "gifts",
                 price: "₹2,499",
                 image: "https://images.unsplash.com/photo-1577490117423-18e37df65558?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 9,
@@ -450,7 +526,7 @@
                 category: "cosmetics",
                 price: "₹349",
                 image: "https://images.unsplash.com/photo-1556229010-aa9e159d4793?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 10,
@@ -458,7 +534,7 @@
                 category: "cosmetics",
                 price: "₹599",
                 image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 11,
@@ -466,7 +542,7 @@
                 category: "cosmetics",
                 price: "₹749",
                 image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 12,
@@ -474,7 +550,7 @@
                 category: "cosmetics",
                 price: "₹899",
                 image: "https://images.unsplash.com/photo-1620916297613-e9a2e7688a92?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 13,
@@ -482,7 +558,7 @@
                 category: "cosmetics",
                 price: "₹449",
                 image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 14,
@@ -490,7 +566,7 @@
                 category: "cosmetics",
                 price: "₹299",
                 image: "https://images.unsplash.com/photo-1571875257727-256c39da42af?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 15,
@@ -498,7 +574,7 @@
                 category: "cosmetics",
                 price: "₹549",
                 image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             },
             {
                 id: 16,
@@ -506,12 +582,17 @@
                 category: "cosmetics",
                 price: "₹399",
                 image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500&q=80",
-                phone: "+91-9876543210"
+                phone: "+91-9339746144"
             }
         ];
 
         let currentCategory = 'all';
         let currentSearch = '';
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
 
         function displayProducts() {
             const container = document.getElementById('productsContainer');
@@ -557,6 +638,12 @@
             event.target.classList.add('active');
             
             displayProducts();
+
+            // Close sidebar on mobile after selection
+            if (window.innerWidth <= 768) {
+                const sidebar = document.getElementById('sidebar');
+                sidebar.classList.remove('active');
+            }
         }
 
         function searchProducts() {
